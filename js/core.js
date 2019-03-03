@@ -143,6 +143,7 @@ const nextSong = () => {
 	}
 
 	if (!gameOver) {
+		sound.volume(slider.value);
 		sound.play();
 	} else {
 		document.getElementById("info-head").innerHTML = 'Game Over'; 
