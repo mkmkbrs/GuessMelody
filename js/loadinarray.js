@@ -1,3 +1,5 @@
+// Im not using it and will delete later
+
 const loadInArray = (jsonDataVar, globalVar, name, tempArr) => {
 	var i = 0;
 	globalVar = jsonDataVar[i].name;
