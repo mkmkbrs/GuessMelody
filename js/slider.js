@@ -9,12 +9,12 @@ output.innerHTML = slider.value;
 // Update the slider value on input
 slider.oninput = function() {
 	output.innerHTML = this.value;
-	Howler.volume(this.value);
+	sound.volume(this.value);
 };
 
 // Update the slider value on wheel
 slider.onwheel = function(e) {
 	slider.value = + slider.value + (e.wheelDelta >= 0 ? 0.01 : -0.01);
 	output.innerHTML = slider.value;
-	Howler.volume(slider.value);
+	sound.volume(slider.value);
 };
