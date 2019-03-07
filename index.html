@@ -9,49 +9,92 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <title>Угадай Мелодию</title>
   </head>
   <body>
     <div class="container">
+
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white px-0">
+            <div>
+                <a href="index.html"><img src="logo_icon.svg" width="30" height="30" class="mr-1 pb-1"></a>
+                <a class="navbar-brand pb-0 font-weight-logo" href="index.html">Угадай Мелодию</a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto font-weight-bold">
+                    <li class="nav-item ml-3">
+                        <a class="nav-link" href="#">О нас</a>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <a class="nav-link" href="#">Контакты</a>
+                    </li>
+                    <form class="form-inline my-2 my-lg-0">
+                        <button class="btn btn-primary btn-gm px-4 py-2 my-2 ml-3 my-sm-0" type="submit">Поддержать</button>
+                    </form>
+                </ul>
+            </div>
+        </nav>
+
+        <br><br>
+
         <div class="row">
             <div class="col-12">
-                <h1 id="info-head">Hello, world!</h1>
-                <p id="info-line"></p>
-                <button type="button" class="btn btn-light" onclick="sound.play()">Test</button>
-                
-                <br>
-                <br>
-
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Enter your answer" id="answer-input">
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" id="answer-btn" onclick="togglePause()">Ответить</button>
-                  </div>
-                </div>
-
-                <div class="slidecontainer d-inline">
-                    <input type="range" step="0.01" min="0.0" max="1.0" value="0.03" class="custom-range" id="volSlider">
-                    <label for="volSlider" id="volDisplay"></label>
-                </div>
-
-                <br>
-
-                <button type="button" class="btn btn-light">Завершить игру</button>
+                <h1 class="font-weight-bold header-font">Музыка ждет вас</h1>
             </div>
         </div>
+
+        <br><br>
+
+        <div class="row">
+            <div class="col-12">
+                <p class="category-font">Жанры</p>
+                <br>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-3 ishadow">
+                <a href="#" class="gm-card-a">
+                    <img data-blur="20" data-hover="true" src="img/pop-ru.jpg" class="img-fluid gm-card">
+                    <p class="font-weight-bold mt-3 gm-card-title">Русский Поп</p>
+                </a>
+            </div>
+            <div class="col-3 ishadow">
+                <a href="#" class="gm-card-a">
+                    <img data-blur="20" data-hover="true" src="img/pop-en.jpg" class="img-fluid gm-card">
+                    <p class="font-weight-bold mt-3 gm-card-title">Зарубежный Поп</p>
+                </a>
+            </div>
+            <div class="col-3 ishadow">
+                <a href="#" class="gm-card-a">
+                    <img data-blur="20" data-hover="true" src="img/rock-ru.jpg" class="img-fluid gm-card">
+                    <p class="font-weight-bold mt-3 gm-card-title">Русский Рок</p>
+                </a>
+            </div>
+            <div class="col-3 ishadow">
+                <a href="game_rock.html" class="gm-card-a">
+                    <img data-blur="20" data-hover="true" src="img/rock-en.jpg" class="img-fluid gm-card">
+                    <p class="font-weight-bold mt-3 gm-card-title">Зарубежный Рок</p>
+                </a>
+            </div>
+        </div>
+
+        <br><br>
+
+        <nav class="navbar navbar-light bg-white px-0">
+            <p class="text-black-50">Угадай Мелодию 2019 ©</p>
+        </nav> 
+
     </div>
 
     <!-- Optional JavaScript -->
-	<!-- Howler.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.js"></script>
-    <!-- p5.js -->
-    <script src="js/p5.min.js"></script>
-    <!-- GuessMelody -->
-    <script src="js/slider.js"></script>
-    <script src="js/core.js"></script>
-    <script src="js/create_sound.js"></script>
-    <script src="js/validation.js"></script>
+    <script src="js/image-shadow.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
