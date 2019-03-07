@@ -1,3 +1,9 @@
+@import "http://fonts.fontstorage.com/import/roboto.css";
+
+* {
+	font-family: 'Roboto';
+}
+
 .custom-range {
   width: 200px;
 }
@@ -6,3 +12,60 @@
 	width: 200px;
 	height: 200px;
 }
+
+.font-weight-logo {
+	font-weight: 800;
+}
+
+.header-font {
+	font-size: 6rem;
+}
+
+.category-font {
+	color: #f34213;
+	font-weight: 800;
+	font-size: 24px;
+	text-transform: uppercase;
+}
+
+.btn-gm {
+	background-color: #f34213;
+	border-radius: 100px;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 800;
+	font-color: #ffffff;
+	border: 2px solid #f34213;
+}
+
+.btn-gm:hover {
+	background-color: #ffffff;
+	border-radius: 100px;
+	font-weight: 800;
+	color: #f34213;
+	border: 2px solid #f34213;
+}
+
+.gm-card {
+	border-radius: 8px;
+}
+
+.gm-card-title {
+	color: #343a40;
+}
+
+.gm-card-a:hover {
+	text-decoration: none;
+}
+
+.navbar-inner {
+    min-height: 0px;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 80px;
+    height: 80px;
+    padding-top: 0;
+}
+
