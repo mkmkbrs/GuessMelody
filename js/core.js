@@ -22,6 +22,9 @@ let currentVol = slider.value;
 let isPlaying = false; 
 let songFade;
 
+let guesses = 0;
+let songsPerGame = 5;
+
 function setup() {
 	loadJSON(url, gotData);
 }
@@ -32,6 +35,7 @@ const gotData = (data) => {
 }
 
 function draw() {
+
 	if (jsonData) {
 		// When data is ready -- load it into arrays and extract it into vars
 		console.log('Data loaded.');
@@ -39,22 +43,24 @@ function draw() {
 		var i = 0;
 
 		var array = jsonData[i].artist;
-    	var arrayLength = array.length;
+		// Load's 'em all (should load only some, around 20-30 per game)
+    	var arrayLength = songsPerGame; //array.length;
     	for (var i = 0; i < arrayLength; i++) {
         	tempArtistArr.push(jsonData[i].artist);
         	tempSongNameArr.push(jsonData[i].songName);
         	tempSrcArr.push(jsonData[i].url);
-        	console.log('Temps are:');
-        	console.log(tempArtistArr);
-        	console.log(tempSongNameArr);
-        	console.log(tempSrcArr);
+        	// console.log('Temps are:');
+        	// console.log(tempArtistArr);
+        	// console.log(tempSongNameArr);
+        	// console.log(tempSrcArr);
         	artist = tempArtistArr[currentSongNum];
         	songName = tempSongNameArr[currentSongNum];
         	srcArr = tempSrcArr[currentSongNum];
-        	console.log('Vars are:')
-        	console.log(artist);
-        	console.log(songName);
-        	console.log(srcArr);
+        	// console.log('Vars are:')
+        	// console.log(artist);
+        	// console.log(songName);
+        	// console.log(srcArr);
+
         	// Throws error at the end but its fine for now
 
         	sound = new Howl({
@@ -65,19 +71,20 @@ function draw() {
 			  	onplay: () => {
 			  		isPlaying = true;
 			  		console.log(isPlaying);
-			  		document.getElementById("info-head").innerHTML = 'Playing...';
+			  		document.getElementById("info-head").innerHTML = 'Слушаем...';
 			  		document.getElementById("info-line").innerHTML = ' ';
 					songFadeFunc();
 			  	},
 			  	onpause: () => {
-			  		document.getElementById("info-head").innerHTML = 'Your answer?';
+			  		document.getElementById("info-head").innerHTML = 'Ваш ответ?';
 			  		document.getElementById("info-line").innerHTML = ' ';
 			  	},
 			  	onend: () => {
-			  		isPlaying = false;
-			  		console.log(isPlaying);
-			  		document.getElementById("info-line").innerHTML = artist + ' - ' + songName;
-			  		checkGameState();
+			  		togglePause();
+			  		// isPlaying = false;
+			  		// console.log(isPlaying);
+			  		// document.getElementById("info-line").innerHTML = artist + ' - ' + songName;
+			  		// checkGameState();
 				}
 			});
     	}
@@ -85,17 +92,22 @@ function draw() {
 		jsonData = false;
 
 	}
+
+	// Dont let the user to answer while music is playing
+	if (document.getElementById('answer-input').value && isPlaying === true) {
+		document.getElementById('answer-input').value = "";
+	}
 }
 
 const togglePause = () => {
-	validationFunc();
-
     if (isPlaying === true) {
     	sound.pause();
+    	document.getElementById('answer-input').placeholder = "Введите ответ"
     	isPlaying = false;
-    } else if (isPlaying === false && validation === true || validation === false){
+    } else if (isPlaying === false){
+    	validationFunc();
     	clearTimeout(songFade);
-        document.getElementById("info-line").innerHTML = artist + ' - ' + songName;
+    	document.getElementById('answer-input').placeholder = "Нажмите Enter, чтобы ответить"
   		checkGameState();
     }
 };
@@ -115,19 +127,16 @@ const changeVars = () => {
 	  	onplay: () => {
 	  		isPlaying = true;
 	  		console.log(isPlaying);
-	  		document.getElementById("info-head").innerHTML = 'Playing...';
+	  		document.getElementById("info-head").innerHTML = 'Слушаем...';
 	  		document.getElementById("info-line").innerHTML = ' ';
 			songFadeFunc();
 	  	},
 	  	onpause: () => {
-	  		document.getElementById("info-head").innerHTML = 'Your answer?';
+	  		document.getElementById("info-head").innerHTML = 'Ваш ответ?';
 	  		document.getElementById("info-line").innerHTML = ' ';
 	  	},
 	  	onend: () => {
-	  		isPlaying = false;
-	  		console.log(isPlaying);
-	  		document.getElementById("info-line").innerHTML = artist + ' - ' + songName;
-	  		checkGameState();
+	  		togglePause();
 		}
 	});
 }
@@ -146,8 +155,13 @@ const nextSong = () => {
 		sound.volume(slider.value);
 		sound.play();
 	} else {
-		document.getElementById("info-head").innerHTML = 'Game Over'; 
- 	    document.getElementById('answer-btn').setAttribute("disabled", "true");
+		document.getElementById("info-head").innerHTML = 'Игра окончена'; 
+		document.getElementById("info-line").innerHTML = 'Вы угадали ' + guesses + ' из ' + songsPerGame + ' песен.';
+
+ 	    document.getElementById("answer-btn").setAttribute("disabled", "true");
+ 	    document.getElementById("answer-group").classList.add('hidden');
+ 	    document.getElementById("volSlider").classList.add('hidden');
+    	document.getElementById("volDisplay").classList.add('hidden');
 	}
 }
 
