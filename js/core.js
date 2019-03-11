@@ -1,8 +1,3 @@
-// Read JSON into variable
-let url = 'https://raw.githubusercontent.com/mkmkbrs/test/master/pop_set_01_en.json';
-
-//Get info from url and use it to declare artists, songNames and urls
-
 let currentSongNum = 0;
 
 var jsonData;
