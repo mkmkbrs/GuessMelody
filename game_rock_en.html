@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css" integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css" integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <title>Угадай Мелодию</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container" style="height: 70vh;">
+
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white px-0">
+            <div>
+                <a href="index.html"><img src="logo_icon.svg" width="30" height="30" class="mr-1 pb-1"></a>
+                <a class="navbar-brand pb-0 font-weight-logo" href="index.html">Угадай Мелодию</a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto font-weight-bold">
+                    <li class="nav-item ml-3">
+                        <a class="nav-link" href="#">О нас</a>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <a class="nav-link" href="#">Контакты</a>
+                    </li>
+                    <form class="form-inline my-2 my-lg-0">
+                        <button class="btn btn-primary btn-gm px-4 py-2 my-2 ml-3 my-sm-0" type="submit">Поддержать</button>
+                    </form>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row h-100">
+            <div class="col-3"></div>
+
+            <div class="col-6 my-auto text-center">
+                <h1 id="info-head" class="font-weight-bold header-font">Загрузка...</h1>
+                <p id="info-line" class="h5 mt-3"></p>
+
+                <br>
+
+                <button type="button" class="btn btn-primary btn-gm px-4 py-2 hidden" id="start-btn" onclick="hideBtn();">Начать игру</button>
+
+                <br>
+
+                <div class="input-group mb-3 hidden" id="answer-group">
+                    <input type="text" class="form-control" placeholder="Нажмите Enter, чтобы ответить" id="answer-input" autofocus onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('answer-btn').click()">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary btn-gm-input" type="button" id="answer-btn" onclick="togglePause()">Ответить</button>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="slidecontainer d-inline p-2" id="volume-group">
+                    <i class="fas fa-volume-up mr-1 hidden" id="volume-icn"></i>
+                    <input type="range" step="0.01" min="0.0" max="1.0" value="0.03" class="custom-range hidden" id="volSlider">
+                    <label for="volSlider" class="ml-1 hidden" id="volDisplay"></label>
+                </div>
+
+                <br>
+
+                <a href="index.html" class="btn btn-light btn-gm-secondary px-4 py-2 font-weight-bold text-secondary hidden" id="btn-endgame">Завершить игру</a>
+            </div>
+        </div>
+
+        <div class="col-3"></div>
+
+        <br><br>
+
+        <nav class="navbar footer navbar-light bg-white px-0">
+            <p class="text-black-50">Угадай Мелодию 2019 ©</p>
+        </nav>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+	<!-- Howler.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.js"></script>
+    <!-- p5.js -->
+    <script src="js/p5.min.js"></script>
+    <!-- fuzzyset.js -->
+    <script src="js/fuzzyset.js"></script>
+    <!-- GuessMelody -->
+    <script src="js/start.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/core_url_rock.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/create_sound.js"></script>
+    <script src="js/validation.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
