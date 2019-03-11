@@ -158,6 +158,7 @@ const nextSong = () => {
  	    document.getElementById("volSlider").classList.add('hidden');
     	document.getElementById("volDisplay").classList.add('hidden');
 		document.getElementById("volume-icn").classList.add('hidden');
+		document.getElementById("btn-replay").classList.remove('hidden');
 	}
 }
 
