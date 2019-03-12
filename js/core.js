@@ -18,7 +18,7 @@ let isPlaying = false;
 let songFade;
 
 let guesses = 0;
-let songsPerGame = 5;
+let songsPerGame = 10;
 
 function setup() {
 	loadJSON(url, gotData);
